@@ -41,6 +41,20 @@ export function ScheduleResult({ users, scheduleHook }: ScheduleResultProps) {
 	return (
 		<section className="mt-6">
 			<h2 className="text-xl font-semibold mb-4">결과</h2>
+			{schedule.warnings.length > 0 && (
+				<div className="mb-4 p-4 bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 rounded-lg">
+					<strong className="font-semibold text-yellow-800 dark:text-yellow-200">
+						주의 사항:
+					</strong>
+					<ul className="mt-2 space-y-1">
+						{schedule.warnings.map((warning, index) => (
+							<li key={index} className="text-sm text-yellow-700 dark:text-yellow-300">
+								{warning}
+							</li>
+						))}
+					</ul>
+				</div>
+			)}
 			<div className="mb-4">
 				<strong className="font-semibold">핵심일(선호도 높은 날짜 우선):</strong>{" "}
 				{_.isEmpty(schedule.coreDates)

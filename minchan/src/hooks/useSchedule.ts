@@ -1,18 +1,17 @@
 import { useMemo } from "react";
 import _ from "lodash";
-import { User } from "../types";
-import { REQUIRED_DUTY_PER_USER } from "../constants";
+import { User, AlgorithmSettings } from "../types";
 import { computeSchedule, SchedulingResult } from "../scheduler/schedule";
 
-export function useSchedule(users: User[]) {
+export function useSchedule(users: User[], settings: AlgorithmSettings) {
 	const validationMessage = (() => {
 		if (_.isEmpty(users)) return "사용자를 추가하세요.";
 		const underMin = _.find(
 			users,
-			(u) => u.selectedDates.length < REQUIRED_DUTY_PER_USER,
+			(u) => u.selectedDates.length < settings.minDatesPerPerson,
 		);
 		if (underMin)
-			return `${underMin.name} 님은 최소 ${REQUIRED_DUTY_PER_USER}일을 선택해야 합니다.`;
+			return `${underMin.name} 님은 최소 ${settings.minDatesPerPerson}일을 선택해야 합니다.`;
 		return null;
 	})();
 
@@ -20,13 +19,14 @@ export function useSchedule(users: User[]) {
 		if (validationMessage) return null;
 		return computeSchedule(
 			new Map(_.map(users, (u) => [u.id, new Set(u.selectedDates)])),
-			REQUIRED_DUTY_PER_USER,
+			settings.minMeetingsPerPerson || settings.minDatesPerPerson,
+			settings,
+			users,
 		);
-	}, [users, validationMessage]);
+	}, [users, validationMessage, settings]);
 
 	return {
 		validationMessage,
 		schedule,
 	};
 }
-

@@ -1,16 +1,26 @@
-import { REQUIRED_DUTY_PER_USER } from "../constants";
 import { MiniCalendar } from "./MiniCalendar";
 import { useCalendar } from "../hooks/useCalendar";
 import { useSelections } from "../hooks/useSelections";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
+import { User } from "../types";
+import { SchedulingResult } from "../scheduler/schedule";
 
 interface CalendarSectionProps {
 	calendarHook: ReturnType<typeof useCalendar>;
 	selectionsHook: ReturnType<typeof useSelections>;
+	users: User[];
+	schedule: SchedulingResult | null;
+	settings: { minDatesPerPerson: number };
 }
 
-export function CalendarSection({ calendarHook, selectionsHook }: CalendarSectionProps) {
+export function CalendarSection({
+	calendarHook,
+	selectionsHook,
+	users,
+	schedule,
+	settings,
+}: CalendarSectionProps) {
 	const {
 		displayYear,
 		displayMonth,
@@ -18,7 +28,7 @@ export function CalendarSection({ calendarHook, selectionsHook }: CalendarSectio
 		handleNextMonth,
 		handleMonthInput,
 	} = calendarHook;
-	const { activeUser, toggleDateForActiveUser } = selectionsHook;
+	const { activeUser, activeUserId, toggleDateForActiveUser } = selectionsHook;
 
 	return (
 		<section className="mt-6">
@@ -45,12 +55,15 @@ export function CalendarSection({ calendarHook, selectionsHook }: CalendarSectio
 				month={displayMonth}
 				selectedDates={activeUser?.selectedDates ?? []}
 				onToggleDate={toggleDateForActiveUser}
+				users={users}
+				schedule={schedule}
+				activeUserId={activeUserId}
 			/>
 			<p className="text-muted-foreground mt-4 text-sm">
 				주말은 하이라이트되며 선택/해제가 가능합니다. 각 사용자는 최소{" "}
-				{REQUIRED_DUTY_PER_USER}일을 선택해야 합니다.
+				{settings.minDatesPerPerson}일을 선택해야 합니다. 추천 날짜는 파란색으로
+				표시됩니다.
 			</p>
 		</section>
 	);
 }
-

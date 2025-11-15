@@ -28,6 +28,7 @@ export function useSelections({ users, setUsers, activeUserId }: UseSelectionsPr
 
 	return {
 		activeUser,
+		activeUserId,
 		toggleDateForActiveUser,
 	};
 }

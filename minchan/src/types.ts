@@ -18,3 +18,10 @@ export const selectionSchema = z.object({
 	users: z.array(userSchema).max(MAX_USERS),
 });
 
+// 알고리즘 설정 타입
+export type AlgorithmSettings = {
+	minDatesPerPerson: number; // 인당 최소 선택 날짜 수
+	minMeetingDates: number; // 최소 모임 횟수
+	minMeetingsPerPerson: number; // 인당 최소 참석 모임 횟수 (0 = 제한 없음)
+	minParticipantsPerMeeting: number; // 모임당 최소 참석 인원
+};
