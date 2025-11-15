@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>모임 날짜 투표</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>📅 모임 날짜 투표</h1>
+
+        <!-- 설정 버튼 -->
+        <div class="settings-toggle">
+            <button type="button" class="btn-settings" onclick="toggleSettingsPanel()">⚙️ 알고리즘 설정</button>
+        </div>
+
+        <!-- 설정 패널 -->
+        <div id="settingsPanel" class="settings-panel" style="display: none;">
+            <h3>모임 날짜 결정 알고리즘 설정</h3>
+
+            <div class="settings-grid">
+                <div class="setting-item">
+                    <label for="minDatesPerPerson">인당 최소 선택 날짜 수</label>
+                    <input type="number" id="minDatesPerPerson" min="1" value="1">
+                    <span class="setting-description">각 참가자가 최소한 선택해야 하는 날짜 수</span>
+                </div>
+
+                <div class="setting-item">
+                    <label for="minMeetingDates">최소 모임 횟수</label>
+                    <input type="number" id="minMeetingDates" min="1" value="1">
+                    <span class="setting-description">최종적으로 정해질 모임 날짜의 최소 개수</span>
+                </div>
+
+                <div class="setting-item">
+                    <label for="minMeetingsPerPerson">인당 최소 참석 모임 횟수</label>
+                    <input type="number" id="minMeetingsPerPerson" min="0" value="0">
+                    <span class="setting-description">각 참가자가 최소한 참석해야 하는 모임 횟수 (0 = 제한 없음)</span>
+                </div>
+
+                <div class="setting-item">
+                    <label for="minParticipantsPerMeeting">모임당 최소 참석 인원</label>
+                    <input type="number" id="minParticipantsPerMeeting" min="1" value="2">
+                    <span class="setting-description">한 모임 날짜에 최소한 참석해야 하는 인원 수</span>
+                </div>
+            </div>
+
+            <div class="settings-actions">
+                <button type="button" class="btn-save-settings" onclick="saveSettings()">저장</button>
+                <button type="button" class="btn-reset-settings" onclick="resetSettings()">초기화</button>
+                <button type="button" class="btn-cancel-settings" onclick="toggleSettingsPanel()">취소</button>
+            </div>
+        </div>
+
+        <div class="vote-section">
+            <div class="input-group">
+                <label for="nameInput">이름</label>
+                <input type="text" id="nameInput" placeholder="이름을 입력하세요">
+            </div>
+
+            <div class="input-group">
+                <label>가능한 날짜를 선택하세요</label>
+                <div class="calendar-container">
+                    <div class="calendar-header">
+                        <button type="button" class="btn-month" id="prevMonth" onclick="changeMonth(-1)">◀</button>
+                        <div class="current-month" id="currentMonth"></div>
+                        <button type="button" class="btn-month" id="nextMonth" onclick="changeMonth(1)">▶</button>
+                    </div>
+                    <div class="calendar-days-header">
+                        <div class="day-header">일</div>
+                        <div class="day-header">월</div>
+                        <div class="day-header">화</div>
+                        <div class="day-header">수</div>
+                        <div class="day-header">목</div>
+                        <div class="day-header">금</div>
+                        <div class="day-header">토</div>
+                    </div>
+                    <div class="calendar-grid" id="calendarGrid">
+                        <!-- 달력 날짜들이 여기에 동적으로 추가됩니다 -->
+                    </div>
+                </div>
+                <div class="selected-dates-display" id="selectedDatesDisplay">
+                    선택된 날짜가 없습니다
+                </div>
+            </div>
+
+            <button onclick="addVote()">투표하기</button>
+        </div>
+
+        <div class="results-section" id="resultsSection">
+            <!-- 결과가 여기에 표시됩니다 -->
+        </div>
+
+        <div class="participants-list" id="participantsList">
+            <!-- 참가자 목록이 여기에 표시됩니다 -->
+        </div>
+    </div>
+
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>
