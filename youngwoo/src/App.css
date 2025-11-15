@@ -1,0 +1,385 @@
+.page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.hero {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.eyebrow {
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #64748b;
+  margin: 0;
+}
+
+.hero h1 {
+  margin: 0;
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+}
+
+.subcopy {
+  margin: 0;
+  color: #475569;
+}
+
+.panel {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 1.75rem;
+  box-shadow: 0 20px 50px rgba(15, 23, 42, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.panel-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.panel-header h2 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.panel-header span {
+  color: #64748b;
+  font-size: 0.95rem;
+}
+
+.settings-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+}
+
+.settings-grid label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.settings-grid input {
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.95rem;
+}
+
+.stat-box {
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 0.85rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  background: #f8fafc;
+}
+
+.stat-box span {
+  font-size: 0.85rem;
+  color: #64748b;
+}
+
+.stat-box strong {
+  font-size: 1.4rem;
+}
+
+.stat-box small {
+  color: #94a3b8;
+}
+
+.add-member {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.add-member input {
+  flex: 1;
+  min-width: 180px;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 0.6rem 0.75rem;
+}
+
+button {
+  border: none;
+  border-radius: 12px;
+  padding: 0.6rem 1.25rem;
+  font-weight: 600;
+  cursor: pointer;
+  background: #2563eb;
+  color: #fff;
+  transition: background 0.2s ease;
+}
+
+button:hover {
+  background: #1e3fa3;
+}
+
+button.ghost {
+  background: transparent;
+  color: #475569;
+  border: 1px solid #e2e8f0;
+}
+
+button.ghost:hover {
+  background: #f1f5f9;
+}
+
+.member-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.empty-state {
+  margin: 0;
+  padding: 1rem;
+  background: #f8fafc;
+  border-radius: 12px;
+  color: #475569;
+}
+
+.member-card {
+  border: 1px solid #e2e8f0;
+  border-radius: 18px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.member-card.selected {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+}
+
+.member-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.member-header h3 {
+  margin: 0 0 0.35rem 0;
+}
+
+.member-actions {
+  display: flex;
+  gap: 0.4rem;
+}
+
+button.ghost.active {
+  border-color: #2563eb;
+  color: #2563eb;
+  background: rgba(37, 99, 235, 0.08);
+}
+
+.inline-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  color: #475569;
+}
+
+.inline-label input {
+  width: 70px;
+  padding: 0.3rem 0.4rem;
+}
+
+.calendar-hint {
+  margin: 0;
+  color: #475569;
+  font-size: 0.9rem;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: #e0f2fe;
+  color: #0f172a;
+  padding: 0.35rem 0.65rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+}
+
+.chip button {
+  background: transparent;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.chip.muted {
+  background: #f1f5f9;
+  color: #94a3b8;
+}
+
+.calendar {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.4rem;
+}
+
+.weekday {
+  text-align: center;
+  font-weight: 600;
+  color: #475569;
+}
+
+.day {
+  min-height: 120px;
+  border-radius: 14px;
+  padding: 0.5rem;
+  background: #f8fafc;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: flex-start;
+  border: 1px solid transparent;
+  text-align: left;
+  width: 100%;
+  color: #0f172a;
+}
+
+.day:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.day.muted {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.day.editable {
+  cursor: pointer;
+  border-color: #e2e8f0;
+}
+
+.day.primary {
+  border: 2px solid #2563eb;
+  background: #e0edff;
+}
+
+.day.active-member {
+  box-shadow: inset 0 0 0 2px rgba(6, 182, 212, 0.6);
+}
+
+.date-number {
+  font-weight: 600;
+}
+
+.attendee-count {
+  font-size: 0.85rem;
+  color: #475569;
+}
+
+.alert {
+  border-radius: 16px;
+  padding: 1rem;
+  background: #fff7ed;
+  border: 1px solid #fdba74;
+  color: #9a3412;
+}
+
+.alert strong {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.alert ul {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+.calendar-toolbar {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 0.75rem 1rem;
+  background: #f8fafc;
+}
+
+.calendar-toolbar div {
+  flex: 1;
+  min-width: 160px;
+}
+
+.calendar-toolbar strong {
+  display: block;
+  font-size: 0.9rem;
+  color: #475569;
+}
+
+.calendar-toolbar p {
+  margin: 0.1rem 0 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.name-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+}
+
+.name-pill {
+  border-radius: 999px;
+  padding: 0.1rem 0.45rem;
+  background: rgba(37, 99, 235, 0.15);
+  color: #1e3a8a;
+  font-size: 0.8rem;
+}
+
+.muted-text {
+  color: #94a3b8;
+  font-size: 0.85rem;
+}
+
+.recommend-label {
+  align-self: flex-start;
+  border-radius: 999px;
+  background: #2563eb;
+  color: #fff;
+  padding: 0.1rem 0.5rem;
+  font-size: 0.7rem;
+}
+
+@media (max-width: 640px) {
+  .panel {
+    padding: 1.2rem;
+  }
+
+  button {
+    width: 100%;
+  }
+}
