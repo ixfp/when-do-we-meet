@@ -48,6 +48,20 @@
   gap: 0.25rem;
 }
 
+.panel-header.panel-header-with-button {
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.panel-header.panel-header-with-button > div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
 .panel-header h2 {
   margin: 0;
   font-size: 1.2rem;
@@ -102,6 +116,95 @@
   color: #94a3b8;
 }
 
+.algorithm-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 4rem 1rem;
+  pointer-events: none;
+}
+
+.algorithm-overlay > * {
+  pointer-events: auto;
+}
+
+.overlay-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.55);
+  backdrop-filter: blur(2px);
+}
+
+.algorithm-panel {
+  border: 2px solid #c7d2fe;
+  background: #ffffff;
+  border-radius: 28px;
+  width: min(640px, 100%);
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 30px 60px rgba(15, 23, 42, 0.35);
+  position: relative;
+  z-index: 1;
+}
+
+.algorithm-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.algorithm-grid label {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 1rem;
+  border: 1px solid #e0e7ff;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.algorithm-grid input {
+  border: 1px solid #cbd5f5;
+  border-radius: 12px;
+  padding: 0.55rem 0.75rem;
+  font-size: 0.95rem;
+}
+
+.field-hint {
+  font-size: 0.85rem;
+  color: #64748b;
+  font-weight: 400;
+}
+
+.algorithm-actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.algorithm-actions button.primary {
+  background: #16a34a;
+}
+
+.algorithm-actions button.primary:hover {
+  background: #15803d;
+}
+
+.algorithm-actions button.warn {
+  background: #facc15;
+  color: #713f12;
+}
+
+.algorithm-actions button.warn:hover {
+  background: #eab308;
+}
+
 .add-member {
   display: flex;
   flex-wrap: wrap;
@@ -129,6 +232,15 @@ button {
 
 button:hover {
   background: #1e3fa3;
+}
+
+button.secondary {
+  background: #e2e8f0;
+  color: #0f172a;
+}
+
+button.secondary:hover {
+  background: #cbd5f5;
 }
 
 button.ghost {
@@ -381,5 +493,10 @@ button.ghost.active {
 
   button {
     width: 100%;
+  }
+
+  .algorithm-overlay {
+    padding: 1.5rem 0.5rem;
+    align-items: flex-start;
   }
 }
